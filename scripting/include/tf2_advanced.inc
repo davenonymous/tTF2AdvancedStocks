@@ -1,60 +1,169 @@
+#define TF2_PLAYER_SLOWED		(1 << 0)    
+#define TF2_PLAYER_ZOOMED		(1 << 1)    
+#define TF2_PLAYER_DISGUISING		(1 << 2)    
+#define TF2_PLAYER_DISGUISED		(1 << 3)    
+#define TF2_PLAYER_CLOAKED		(1 << 4)    
+#define TF2_PLAYER_INVULN		(1 << 5)    
+#define TF2_PLAYER_GLOWING		(1 << 6)    
+#define TF2_PLAYER_TAUNTING		(1 << 7)    
+#define TF2_PLAYER_TELEPORT		(1 << 10)   
+#define TF2_PLAYER_CRITS		(1 << 11)   
+#define TF2_PLAYER_FEIGNDEATH		(1 << 13)   
+#define TF2_PLAYER_BLUR			(1 << 14)   
+#define TF2_PLAYER_STUN			(1 << 15)   
+#define TF2_PLAYER_BUFF			(1 << 16)   
+#define TF2_PLAYER_CHARGING		(1 << 17)   
+#define TF2_PLAYER_HEALING		(1 << 19)   
+#define TF2_PLAYER_ONFIRE		(1 << 20)   
+#define TF2_PLAYER_OVERHEALING		(1 << 21)   
+#define TF2_PLAYER_URINE		(1 << 22)   
+
+#define TF2_COND_SLOWED			0	
+#define TF2_COND_ZOOMED			1	
+#define TF2_COND_DISGUISING		2	
+#define TF2_COND_DISGUISED		3	
+#define TF2_COND_CLOAKED		4	
+#define TF2_COND_INVULN			5	
+#define TF2_COND_GLOWING		6	
+#define TF2_COND_TAUNTING		7	
+#define TF2_COND_TELEPORT		10	
+#define TF2_COND_CRITS	    		11	
+#define TF2_COND_FEIGNDEATH		13	
+#define TF2_COND_BLUR			14	
+#define TF2_COND_STUN			15	
+#define TF2_COND_BUFF			16	
+#define TF2_COND_CHARGING		17	
+#define TF2_COND_HEALING		19	
+#define TF2_COND_ONFIRE			20	
+#define TF2_COND_OVERHEALING  		21	
+#define TF2_COND_URINE			22
+
+/**
+ * Gets a clients current condition.
+ * This is mostly for internal usage. You will have more fun
+ * using TF2_IsPlayerZoomed, TF2_IsPlayerHealing etc.
+ *
+ * @param client		Player's index.
+ * @return			Current Player Condition of player.
+ */
 stock TF2_GetPlayerCond(client)
 {
     return GetEntProp(client, Prop_Send, "m_nPlayerCond");
 }
 
+/**
+ * Sets a clients current condition.
+ *
+ * @param client		Player's index.
+ * @param playerCond		Condition the player will be in.
+ * @return			Current Player Condition of player.
+ */
 stock TF2_SetPlayerCond(client,playerCond)
 {
     SetEntProp(client, Prop_Send, "m_nPlayerCond", playerCond);
 }
 
+/**
+ * Gets a clients number of healers
+ *
+ * @param client		Player's index.
+ * @return			Current number of players healing the player.
+ */
 stock TF2_GetNumHealers(client)
 {
     return GetEntProp(client, Prop_Send, "m_nNumHealers");
 }
 
+/**
+ * Get a players current condition: Zoom
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is zoomed in
+ */
 stock bool:TF2_IsPlayerZoomed(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_ZOOMED) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Healing
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is healing somebody
+ */
 stock bool:TF2_IsPlayerHealing(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_HEALING) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Overhealing
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is overhealing somebody.
+ */
 stock bool:TF2_IsPlayerOverHealing(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_OVERHEALING) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Urine
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is covered in urine.
+ */
 stock bool:TF2_IsPlayerUrine(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_URINE) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Taunting
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is taunting.
+ */
 stock bool:TF2_IsPlayerTaunt(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_TAUNTING) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Slowed (by natasha, bonk after-effect etc)
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is being slowed down by something.
+ */
 stock bool:TF2_IsPlayerSlowed(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_SLOWED) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Disguised
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is disguised.
+ */
 stock bool:TF2_IsPlayerDisguised(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_DISGUISED) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Cloak Change (spy's half visible)
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is toggling his cloak.
+ */
 stock bool:TF2_IsPlayerChangingCloak(client)
 {
 	if( TF2_GetPlayerClass(client) == TFClass_Spy )
@@ -67,30 +176,60 @@ stock bool:TF2_IsPlayerChangingCloak(client)
 	return false;
 }
 
+/**
+ * Get a players current condition: Cloaked (spy's full invisible)
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is cloaked.
+ */
 stock bool:TF2_IsPlayerCloaked(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_CLOAKED) != 0) : false;
 }
 
+/**
+ * Get a players current condition: FeignDeath
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently feigning his death.
+ */
 stock bool:TF2_IsPlayerFeignDeath(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_FEIGNDEATH) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Blur (Bonk drink)
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently blurred by bonk.
+ */
 stock bool:TF2_IsPlayerBlur(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_BLUR) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Stunned
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently stunned.
+ */
 stock bool:TF2_IsPlayerStun(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_STUN) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Charge deployed
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player has deploying his charge.
+ */
 stock bool:TF2_IsPlayerChargeReleased(client)
 {
 	new index = GetPlayerWeaponSlot(client, 1);
@@ -107,36 +246,72 @@ stock bool:TF2_IsPlayerChargeReleased(client)
 	return false;
 }
 
+/**
+ * Get a players current condition: Ubered or Kritzed
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently being ubered or kritzed.
+ */
 stock bool:TF2_IsPlayerUber(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & (TF2_PLAYER_INVULN | TF2_PLAYER_CRITS)) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Ubered
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently being ubered.
+ */
 stock bool:TF2_IsPlayerInvuln(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_INVULN) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Kritzed
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently being kritzed.
+ */
 stock bool:TF2_IsPlayerCrits(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_CRITS) != 0) : false;
 }
 
+/**
+ * Get a players current condition: On fire
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently on fire.
+ */
 stock bool:TF2_IsPlayerOnFire(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_ONFIRE) != 0) : false;
 }
 
+/**
+ * Get a players current condition: Charging
+ *
+ * @param client		Player's index.
+ * @return			Returns true if the player is currently charging.
+ */
 stock bool:TF2_IsPlayerCharging(client)
 {
     new pcond = TF2_GetPlayerCond(client);
     return pcond >= 0 ? ((pcond & TF2_PLAYER_CHARGING) != 0) : false;
 }
 
+/**
+ * Set a players current condition: Cloaked
+ *
+ * @param client		Player's index.
+ * @param enabled		Un/Cloak a player.
+ */
 stock TF2_SetPlayerCloak(client, bool:enabled)
 {
     new playerCond = TF2_GetPlayerCond(client);
@@ -146,6 +321,12 @@ stock TF2_SetPlayerCloak(client, bool:enabled)
         TF2_SetPlayerCond(client, (playerCond & (~TF2_PLAYER_CLOAKED)));
 }
 
+/**
+ * Get the base speed of a class, meaning speeds unmodified by weapons, charging etc
+ *
+ * @param class			TFClassType
+ * @return			Base class speed.
+ */
 stock Float:TF2_GetClassSpeed(TFClassType:class)
 {
     switch (class)
@@ -163,6 +344,12 @@ stock Float:TF2_GetClassSpeed(TFClassType:class)
     return 0.0;
 }
 
+/**
+ * Get the speed a player should have when walking regarding his selected weapon, if he's being charged etc
+ *
+ * @param client		Player's index.
+ * @return			The speed a client should have at the moment.
+ */
 stock Float:TF2_GetPlayerClassSpeed(client)
 {
     if( TF2_IsPlayerSlowed( client ) )
@@ -236,6 +423,12 @@ stock Float:TF2_GetPlayerClassSpeed(client)
 	return TF2_GetClassSpeed(TF2_GetPlayerClass(client));
 }
 
+/**
+ * Get the speed a player is now moving at
+ *
+ * @param client		Player's index.
+ * @return			The speed a client is having at the moment.
+ */
 stock Float:TF2_GetPlayerSpeed(client)
 {
 	if( client > 0 )
@@ -247,6 +440,12 @@ stock Float:TF2_GetPlayerSpeed(client)
 	return 0.0;
 }
 
+/**
+ * Set the speed a player can move at
+ *
+ * @param client		Player's index.
+ * @param speed			How fast the maximum speed should be.
+ */
 stock Float:TF2_SetPlayerSpeed(client, Float:speed)
 {
 	if( client > 0 )
@@ -256,6 +455,11 @@ stock Float:TF2_SetPlayerSpeed(client, Float:speed)
 	}
 }
 
+/**
+ * Reset the speed a player can move at to the default value.
+ *
+ * @param client		Player's index.
+ */
 stock Float:TF2_SetPlayerDefaultSpeed(client)
 {
 	if( client > 0 )
@@ -265,6 +469,12 @@ stock Float:TF2_SetPlayerDefaultSpeed(client)
 	}
 }
 
+/**
+ * Get the base health of a client, meaning values unmodified by weapons, decapitations etc
+ *
+ * @param class			TFClassType
+ * @return			Base class speed.
+ */
 stock TF2_GetPlayerDefaultHealth(client)
 {
 	if( client > 0 )
@@ -274,6 +484,12 @@ stock TF2_GetPlayerDefaultHealth(client)
 	return 100;
 }
 
+/**
+ * Get the health a player should have at maximum regarding his selected weapon, if he's decapitated anyone etc
+ *
+ * @param client		Player's index.
+ * @return			The maximum health a client should have at the moment.
+ */
 stock TF2_GetPlayerMaxHealth(client)
 {
 	if( client > 0 )
@@ -340,6 +556,12 @@ stock TF2_GetPlayerMaxHealth(client)
 	return 100;	
 }
 
+/**
+ * Get the number of players a client is dominating
+ *
+ * @param client		Player's index.
+ * @return			Number of players a client is dominating
+ */
 stock TF2_GetPlayerDominations( client )
 {
 	new dominations;
@@ -348,6 +570,21 @@ stock TF2_GetPlayerDominations( client )
 	if (ent != -1)
 		dominations = GetEntData(ent, (offset + client*4), 4);    
 	return dominations;
+}
+
+/**
+ * Get the number of heads a players has collected by decapitating
+ *
+ * @param client		Player's index.
+ * @return			Number of heads a client has decapitated
+ */
+stock TF2_GetDecapitations(any:client)
+{
+	if( client > 0 )
+	{
+		return GetEntProp(client, Prop_Send, "m_iDecapitations");
+	}
+	return -1;
 }
 
 stock TF2_GetCurrentWeaponClass(client, String:name[], maxlength)
@@ -370,15 +607,6 @@ stock TF2_GetWeaponEdictName(index, String:name[], maxlength)
 {
 	if (index > 0)
 		GetEdictClassname(index, name, maxlength);
-}
-
-stock TF2_GetDecapitations(any:client)
-{
-	if( client > 0 )
-	{
-		return GetEntProp(client, Prop_Send, "m_iDecapitations");
-	}
-	return -1;
 }
 
 stock bool:TF2_CurrentWeaponEqual(client, String:name[])
