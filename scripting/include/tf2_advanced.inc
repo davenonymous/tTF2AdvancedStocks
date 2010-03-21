@@ -38,6 +38,123 @@
 #define TF2_COND_OVERHEALING  		21	
 #define TF2_COND_URINE			22
 
+enum TFItems
+{
+	ITEM_WEAPON_BAT					= 0,
+	ITEM_WEAPON_BOTTLE				= 1,
+	ITEM_WEAPON_FIREAXE				= 2,
+	ITEM_WEAPON_KUKRI				= 3,
+	ITEM_WEAPON_KNIFE				= 4,
+	ITEM_WEAPON_FISTS				= 5,
+	ITEM_WEAPON_SHOVEL				= 6,
+	ITEM_WEAPON_WRENCH				= 7,
+	ITEM_WEAPON_BONESAW				= 8,
+	ITEM_WEAPON_SHOTGUN_ENG			= 9,
+	ITEM_WEAPON_SHOTGUN_SOLDIER		= 10,
+	ITEM_WEAPON_SHOTGUN_HWG			= 11,
+	ITEM_WEAPON_SHOTGUN_PYRO		= 12,
+	ITEM_WEAPON_SCATTERGUN			= 13,
+	ITEM_WEAPON_SNIPERRIFLE			= 14,
+	ITEM_WEAPON_MINIGUN				= 15,
+	ITEM_WEAPON_SMG					= 16,
+	ITEM_WEAPON_SYRINGEGUN			= 17,
+	ITEM_WEAPON_ROCKETLAUNCHER		= 18,
+	ITEM_WEAPON_GRENADELAUNCHER		= 19,
+	ITEM_WEAPON_STICKYBOMBLAUNCHER	= 20,
+	ITEM_WEAPON_FLAMETHROWER		= 21,
+	ITEM_WEAPON_PISTOL_ENG			= 22,
+	ITEM_WEAPON_PISTOL_SCOUT		= 23,
+	ITEM_WEAPON_REVOLVER			= 24,
+	ITEM_WEAPON_PDA_BUILD			= 25,
+	ITEM_WEAPON_PDA_DESTROY			= 26,
+	ITEM_WEAPON_PDA_DISGUISE		= 27,
+	ITEM_WEAPON_TOOLBOX				= 28,
+	ITEM_WEAPON_MEDIGUN				= 29,
+	ITEM_WEAPON_WATCH_INVIS			= 30,
+	ITEM_WEAPON_FLAREGUN			= 31,
+	ITEM_WEAPON_BONESAW_LV1			= 32,
+	ITEM_WEAPON_SYRINGEGUN_LV1		= 33,
+	ITEM_WEAPON_MEDIGUN_LV1			= 34,
+	ITEM_WEAPON_KRITZKRIEG			= 35,
+	ITEM_WEAPON_BLUTSAUGER			= 36,
+	ITEM_WEAPON_UBERSAW				= 37,
+	ITEM_WEAPON_AXTINGUISHER		= 38,
+	ITEM_WEAPON_FLAREGUN_HALF		= 39,
+	ITEM_WEAPON_BACKBURNER			= 40,
+	ITEM_WEAPON_NATASCHA			= 41,
+	ITEM_WEAPON_SANDVICH			= 42,
+	ITEM_WEAPON_KGB					= 43,
+	ITEM_WEAPON_SANDMAN				= 44,
+	ITEM_WEAPON_FAN					= 45,
+	ITEM_WEAPON_BONKDRINK			= 46,
+	ITEM_WEAR_DEMO_AFRO				= 47,
+	ITEM_WEAR_ENG_LIGHT				= 48,
+	ITEM_WEAR_HEAVY_FOOTBALL		= 49,
+	ITEM_WEAR_MEDIC_PICKELHAUBE		= 50,
+	ITEM_WEAR_PYRO_BEANIE			= 51,
+	ITEM_WEAR_SCOUT_BATTER			= 52,
+	ITEM_WEAR_SNIPER_TROPHY			= 53,
+	ITEM_WEAR_SOLDIER_STASH			= 54,
+	ITEM_WEAR_SPY_FEDORA			= 55,
+	ITEM_WEAPON_HUNTSMAN			= 56,
+	ITEM_WEAR_RAZORBACK				= 57,
+	ITEM_WEAPON_JARATE				= 58,
+	ITEM_WEAPON_WATCH_DEADRINGER	= 59,
+	ITEM_WEAPON_WATCH_CAD			= 60,
+	ITEM_WEAPON_AMBASSADOR			= 61,
+	ITEM_WEAR_ENG_TENGALLON			= 94,
+	ITEM_WEAR_ENG_CAP				= 95,
+	ITEM_WEAR_HEAVY_USHANKA			= 96,
+	ITEM_WEAR_HEAVY_STOCKING		= 97,
+	ITEM_WEAR_SOLDIER_POT			= 98,
+	ITEM_WEAR_SOLDIER_TYRANT		= 99,
+	ITEM_WEAR_DEMO_GLENGARRY		= 100,
+	ITEM_WEAR_MEDIC_TYROLEAN		= 101,
+	ITEM_WEAR_PYRO_CHIKEN			= 102,
+	ITEM_WEAR_SPY_CAMERA			= 103,
+	ITEM_WEAR_MEDIC_MIRROR			= 104,
+	ITEM_WEAR_PYRO_FIREMAN			= 105,
+	ITEM_WEAR_SCOUT_BONK			= 106,
+	ITEM_WEAR_SCOUT_BAKER			= 107,
+	ITEM_WEAR_SPY_BILLYCOCK			= 108,
+	ITEM_WEAR_SNIPER_PANAMA			= 109,
+	ITEM_WEAR_SNIPER_BAND			= 110,
+	ITEM_WEAR_SCOUT_HATLESS			= 111,
+	ITEM_WEAR_HALLOWEEN_HAT			= 115,
+	ITEM_WEAR_DOMINATION_HAT		= 116,
+	ITEM_WEAR_SNIPER_HATLESS		= 117,
+	ITEM_WEAR_ENG_HATLESS			= 118,
+	ITEM_WEAR_DEMO_TOPHAT			= 120,
+	ITEM_WEAR_SOLDIER_MEDAL			= 121,
+	ITEM_CHEAT_DETECTED_MINOR		= 122,
+	ITEM_CHEAT_DETECTED_MAJOR		= 123,
+	ITEM_CHEAT_DETECTED_HONESTY		= 124,
+	ITEM_WARE_HONEST_HALO			= 125,
+	ITEM_WARE_BILL_HAT				= 126,
+	ITEM_WEAPON_DIRECTHIT			= 127,
+	ITEM_WEAPON_PICKAXE				= 128,
+	ITEM_WEAPON_BATTLE_BANNER		= 129,
+	ITEM_WEAPON_SCOTTISH_RESISTANCE	= 130,
+	ITEM_WEAPON_CHARGIN_TARGE		= 131,
+	ITEM_WEAPON_EYELANDER			= 132,
+	ITEM_WEAPON_GUNBOATS			= 133,
+	ITEM_WEAR_CONTEST_FIRST_PLACE	= 134,
+	ITEM_WEAR_TOWERING_PILLAR		= 135,
+	ITEM_WEAR_CONTEST_SECOND_PLACE	= 136,
+	ITEM_WEAR_NOBLE_AMASSMENT		= 137,
+	ITEM_WEAR_CONTEST_THIRD_PLACE	= 138,
+	ITEM_WEAR_MODEST_PILE			= 139
+};
+
+stock TF2_GetItemDefIndex( entIndex )
+{
+	if( entIndex != -1 )
+	{
+		return GetEntProp( entIndex, Prop_Send, "m_iItemDefinitionIndex" );
+	}
+	return -1;
+}
+
 /**
  * Gets a clients current condition.
  * This is mostly for internal usage. You will have more fun
@@ -554,6 +671,72 @@ stock TF2_GetPlayerMaxHealth(client)
 	}
 	
 	return 100;	
+}
+
+stock TF2_GetPlayerNormalHealth(client)
+{
+	if( client > 0 )
+	{	
+		switch ( TF2_GetPlayerClass( client ) )
+		{
+			case TFClass_Scout:
+			{
+				new weaponIndex = GetPlayerWeaponSlot( client, 2 );
+				if( weaponIndex != -1)
+				{
+					if( TF2_GetItemDefIndex( weaponIndex ) == _:ITEM_WEAPON_SANDMAN )
+					{
+						return 95;
+					}
+					else
+					{
+						return 125;
+					}
+				}
+			}
+			case TFClass_Soldier:	return 200;
+			case TFClass_DemoMan:
+			{
+				new weaponIndex = GetPlayerWeaponSlot( client, 2 );
+				if( TF2_GetItemDefIndex( weaponIndex ) == _:ITEM_WEAPON_EYELANDER )
+				{
+					new head = TF2_GetDecapitations( client );
+					if( head == 1 )
+					{
+				 		return 190;
+					}
+					else if( head == 2 )
+					{
+						return 215;
+					}
+					else if( head == 3 )
+					{
+				        	return 230;
+					}
+					else if( head >= 4 )
+					{
+						return 245;
+					}
+					else
+					{
+						return 175;
+					}
+				}	
+				else
+				{
+					return 175;
+				}
+			}
+			case TFClass_Medic:		return 150;
+			case TFClass_Pyro:		return 175;
+			case TFClass_Spy:		return 125;
+			case TFClass_Engineer:		return 125;
+			case TFClass_Sniper:		return 125;
+			case TFClass_Heavy:		return 300;
+		}
+	}
+	
+	return 125;	
 }
 
 /**
